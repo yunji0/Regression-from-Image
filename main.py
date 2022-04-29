@@ -228,18 +228,8 @@ class NET(nn.Module):
 
 		#x = torch.sigmoid(x)
 		return x
-#model = NET().cuda()
+model = NET().cuda()
 
-import torchvision.models as models
-model = models.resnet18(pretrained=True)
-pre_output = model.fc.in_features
-model.fc =nn.Linear(pre_output,1)
-model = model.cuda()
-
-# model= models.resnet34(pretrained =False)
-# num_ftrs = model.fc.in_features
-# model.fc = nn.Linear(num_ftrs, 10
-# model = model.cuda()
 
 optimizer = torch.optim.Adam(model.parameters(), lr = 0.001, weight_decay=0.00001)
 criterion = nn.MSELoss()
